@@ -40,12 +40,13 @@ def main():
                 r = agent.rollout_one(tok, model, p, greedy=True)
         else:
             r = agent.rollout_one(tok, model, p, greedy=True)
-        rows.append({"idx": args.offset + i, "kind": p["kind"], "correct": r["correct"],
-                     "used_tool": r["used_tool"], "answer_given": r["answer_given"], "truth": r["truth"]})
+        row = {"idx": args.offset + i, "kind": p["kind"], "correct": r["correct"],
+               "used_tool": r["used_tool"], "answer_given": r["answer_given"], "truth": r["truth"],
+               "n_tokens": r.get("n_tokens")}
+        rows.append(row)
+        with open(args.out, "a") as f:
+            f.write(json.dumps(row) + "\n")
         print(i, p["kind"], "correct" if r["correct"] else "wrong", "tool" if r["used_tool"] else "", flush=True)
-    with open(args.out, "a") as f:
-        for r in rows:
-            f.write(json.dumps(r) + "\n")
     acc = sum(r["correct"] for r in rows) / max(1, len(rows))
     print(f"chunk acc {acc:.2f} ({sum(r['correct'] for r in rows)}/{len(rows)})")
 

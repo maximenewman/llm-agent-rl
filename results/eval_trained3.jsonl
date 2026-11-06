@@ -1,0 +1,12 @@
+{"idx": 0, "kind": "hard_splitfee", "correct": false, "used_tool": true, "answer_given": "27", "truth": 20, "n_tokens": 128}
+{"idx": 1, "kind": "div", "correct": false, "used_tool": true, "answer_given": "91", "truth": 93, "n_tokens": 127}
+{"idx": 2, "kind": "mul", "correct": true, "used_tool": true, "answer_given": "205", "truth": 205, "n_tokens": 103}
+{"idx": 3, "kind": "hard_net", "correct": false, "used_tool": true, "answer_given": "192", "truth": 128, "n_tokens": 128}
+{"idx": 4, "kind": "div", "correct": false, "used_tool": true, "answer_given": "82", "truth": 83, "n_tokens": 128}
+{"idx": 5, "kind": "mul", "correct": true, "used_tool": true, "answer_given": "175", "truth": 175, "n_tokens": 128}
+{"idx": 6, "kind": "hard_splitfee", "correct": false, "used_tool": true, "answer_given": "67", "truth": 63, "n_tokens": 128}
+{"idx": 7, "kind": "mul", "correct": true, "used_tool": true, "answer_given": "336", "truth": 336, "n_tokens": 128}
+{"idx": 8, "kind": "add", "correct": true, "used_tool": true, "answer_given": "1182", "truth": 1182, "n_tokens": 100}
+{"idx": 9, "kind": "hard_profit", "correct": false, "used_tool": true, "answer_given": "1416", "truth": 315, "n_tokens": 128}
+{"idx": 10, "kind": "div", "correct": true, "used_tool": true, "answer_given": "92", "truth": 92, "n_tokens": 128}
+{"idx": 11, "kind": "hard_net", "correct": false, "used_tool": true, "answer_given": "376", "truth": 416, "n_tokens": 128}

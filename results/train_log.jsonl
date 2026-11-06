@@ -73,3 +73,27 @@
 {"update": 72, "kind": "hard_net", "reward_mean": 0.10000000149011612, "reward_max": 0.10000000149011612, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 82, "tok_mean": 70.0, "skipped": true}
 {"update": 73, "kind": "hard_net", "reward_mean": 0.10000000149011612, "reward_max": 0.10000000149011612, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 82, "tok_mean": 64.0, "skipped": true}
 {"update": 74, "kind": "hard_profit", "reward_mean": 0.07500000298023224, "reward_max": 0.10000000149011612, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 63, "tok_mean": 96.0, "loss": 0.010192934423685074, "s": 26.4}
+{"update": 75, "kind": "hard_net", "reward_mean": 0.10000000149011612, "reward_max": 0.10000000149011612, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 63, "tok_mean": 85.0, "skipped": true}
+{"update": 76, "kind": "hard_net", "reward_mean": 0.10000000149011612, "reward_max": 0.10000000149011612, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 63, "tok_mean": 82.0, "skipped": true}
+{"update": 77, "kind": "hard_profit", "reward_mean": 0.10000000149011612, "reward_max": 0.10000000149011612, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 41, "tok_mean": 85.0, "skipped": true}
+{"update": 78, "kind": "hard_net", "reward_mean": 0.11249999701976776, "reward_max": 0.25, "correct_frac": 0.25, "tool_frac": 1.0, "budget": 52, "tok_mean": 81.0, "loss": -0.03804115578532219, "s": 22.1}
+{"update": 79, "kind": "hard_splitfee", "reward_mean": 0.10000000149011612, "reward_max": 0.10000000149011612, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 88, "tok_mean": 96.0, "skipped": true}
+{"update": 80, "kind": "hard_net", "reward_mean": 0.10000000149011612, "reward_max": 0.10000000149011612, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 71, "tok_mean": 82.0, "skipped": true}
+{"update": 81, "kind": "hard_net", "reward_mean": 0.10000000149011612, "reward_max": 0.10000000149011612, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 56, "tok_mean": 85.0, "skipped": true}
+{"update": 82, "kind": "hard_net", "reward_mean": 0.10000000149011612, "reward_max": 0.10000000149011612, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 48, "tok_mean": 75.0, "skipped": true}
+{"update": 83, "kind": "hard_net", "reward_mean": 0.40000003576278687, "reward_max": 0.550000011920929, "correct_frac": 0.5, "tool_frac": 1.0, "budget": 71, "tok_mean": 96.0, "loss": -0.1586315575782976, "s": 25.0}
+{"update": 84, "kind": "hard_splitfee", "reward_mean": 0.25, "reward_max": 0.4000000059604645, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 86, "tok_mean": 69.0, "loss": -0.027931902557611465, "s": 19.8}
+{"update": 85, "kind": "hard_profit", "reward_mean": 0.13750000298023224, "reward_max": 0.25, "correct_frac": 0.25, "tool_frac": 1.0, "budget": 57, "tok_mean": 86.0, "loss": 0.10247567109763622, "s": 22.6}
+{"update": 86, "kind": "hard_net", "reward_mean": 0.4000000059604645, "reward_max": 0.4000000059604645, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 41, "tok_mean": 83.0, "skipped": true}
+{"update": 87, "kind": "hard_net", "reward_mean": 0.10000000149011612, "reward_max": 0.10000000149011612, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 41, "tok_mean": 58.0, "skipped": true}
+{"update": 88, "kind": "hard_net", "reward_mean": 0.10000000149011612, "reward_max": 0.10000000149011612, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 58, "tok_mean": 90.0, "skipped": true}
+{"update": 89, "kind": "hard_net", "reward_mean": 0.17500001192092896, "reward_max": 0.4000000059604645, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 83, "tok_mean": 84.0, "loss": -0.05026654712855816, "s": 23.2}
+{"update": 90, "kind": "hard_profit", "reward_mean": 0.17500001192092896, "reward_max": 0.4000000059604645, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 62, "tok_mean": 96.0, "loss": -0.05250924080610275, "s": 25.1}
+{"update": 91, "kind": "hard_net", "reward_mean": 0.4000000059604645, "reward_max": 0.4000000059604645, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 80, "tok_mean": 96.0, "skipped": true}
+{"update": 92, "kind": "hard_net", "reward_mean": 0.15000000596046448, "reward_max": 0.4000000059604645, "correct_frac": 0.0, "tool_frac": 0.75, "budget": 70, "tok_mean": 84.0, "loss": 0.01558147557079792, "s": 23.3}
+{"update": 93, "kind": "hard_net", "reward_mean": 0.4000000059604645, "reward_max": 0.4000000059604645, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 46, "tok_mean": 96.0, "skipped": true}
+{"update": 94, "kind": "hard_profit", "reward_mean": 0.32499998807907104, "reward_max": 0.4000000059604645, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 66, "tok_mean": 96.0, "loss": -0.09833141253329813, "s": 24.0}
+{"update": 95, "kind": "hard_net", "reward_mean": 0.07500000298023224, "reward_max": 0.10000000149011612, "correct_frac": 0.0, "tool_frac": 0.75, "budget": 57, "tok_mean": 84.0, "loss": -0.1850289274007082, "s": 22.9}
+{"update": 96, "kind": "hard_net", "reward_mean": 0.4000000059604645, "reward_max": 0.4000000059604645, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 54, "tok_mean": 96.0, "skipped": true}
+{"update": 97, "kind": "hard_splitfee", "reward_mean": 0.4000000059604645, "reward_max": 0.4000000059604645, "correct_frac": 0.0, "tool_frac": 1.0, "budget": 47, "tok_mean": 96.0, "skipped": true}
+{"update": 98, "kind": "hard_profit", "reward_mean": 0.30000001192092896, "reward_max": 0.4000000059604645, "correct_frac": 0.0, "tool_frac": 0.75, "budget": 35, "tok_mean": 84.0, "loss": 0.07562492415308952, "s": 23.5}

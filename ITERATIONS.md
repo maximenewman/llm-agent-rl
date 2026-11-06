@@ -85,3 +85,29 @@ Honest record of design decisions, pivots, and results. Newest first.
   kind comes up. Exploration risk noted: hard groups are often all-wrong
   (skip); the +0.15 correctness bonus (iter 8) keeps variance when at least
   one rollout lands.
+
+## 2026-11-06 (iter 10) - dense signal for hard problems: expression bonus
+- Observation: hard-only phase wasted ~80% of rollouts: most hard groups are
+  all-wrong -> zero variance -> skip. Wall-clock burned, no gradient.
+- Change: +0.3 when the CALC expression the agent built evaluates to the true
+  answer (calculator-verified), even if copying into ANSWER[...] failed. On
+  multi-step problems, building the right expression IS the hard part; this
+  gives group-internal variance on exactly the failures we need to fix.
+  Gaming risk is bounded: the bonus requires the true numeric answer.
+
+## 2026-11-06 (iter 11) - FAILURE: hard-only + expression bonus made things worse. Reverting to @27.
+- Checkpoint @100: held-out 5/12 (from 7/12 @27), hard kinds still 0/5, and
+  mean output tokens ROSE from ~90 to 123. Two honest lessons:
+  1. Expression bonus was reward-hacked: the agent learned to build the right
+     CALC expression and stop caring about the final ANSWER copy (several
+     groups with uniform 0.4 mean = all right-expression/wrong-answer).
+     A classic partial-credit failure: the intermediate reward decoupled from
+     the final objective.
+  2. Hard-only training starved the easy kinds; their accuracy slipped.
+- Decision: restore adapter + optimizer from the @27 checkpoint commit (best
+  measured state, 58% held-out) and retrain from there with the iter-8 reward
+  (LCPO-Max + 0.15 correctness + format shaping, mixed problems, budget
+  U(32,88)). Token brevity will be measured honestly at inference via
+  generation caps (the frontier), since training-side pressure did not bite
+  in this budget - consistent with DLER's warning that length penalties are
+  easy to get wrong.
