@@ -55,3 +55,33 @@ Honest record of design decisions, pivots, and results. Newest first.
   curriculum has not bitten yet - the LCPO term only pays when under budget,
   and most generations still ramble to the cap).
 - Next: more updates; then budget-down curriculum; then frontier eval.
+
+## 2026-11-06 (iter 7) - budget curriculum step down
+- Accuracy has formed (58% held-out at update 27; easy kinds unanimous in
+  training groups). Token count still ~90: LCPO term rarely paid because
+  budgets (48-112) were generous vs actual generations.
+- Change: budget range U(48,112) -> U(32,88). Roughly half of sampled budgets
+  now sit below the ~90-token status quo, so concise correct answers earn
+  strictly more than rambling ones. Watching for accuracy regression; if
+  correct_frac drops materially, alpha goes down or the range goes back up.
+
+## 2026-11-06 (iter 8) - correctness-signal fix under tight budgets
+- Observation: with the tighter curriculum, groups where all rollouts ran over
+  budget had the LCPO term clip to 0 for correct and wrong alike (update 39:
+  1/4 correct, zero reward variance, skipped). The multiplicative form erases
+  the correctness signal exactly when generations are long - the regime the
+  curriculum creates on purpose. (Same failure family DLER, arXiv:2510.15110,
+  warns about in length-penalty design.)
+- Change: +0.15 additive bonus for correctness, so correct-over-budget (0.25)
+  still beats wrong (0.10). LCPO term unchanged and still drives the brevity
+  gradient whenever any rollout is within ~17 tokens of budget.
+
+## 2026-11-06 (iter 9) - plateau on hard problems -> hard-only training phase
+- Checkpoint @65 updates: held-out 6/12 (vs 7/12 @27) - within noise, but hard
+  kinds 0/5: the multi-step problems are not cracking. Easy kinds are solved
+  and their groups now mostly skip (no variance), so most remaining gradient
+  was going nowhere.
+- Change: HARD_ONLY=1 env switch - training problems resampled until a hard
+  kind comes up. Exploration risk noted: hard groups are often all-wrong
+  (skip); the +0.15 correctness bonus (iter 8) keeps variance when at least
+  one rollout lands.

@@ -6,6 +6,7 @@ gradient step per batch (= GRPO with a single inner epoch). The base model
 stays frozen in bf16; only the LoRA adapters are trained in fp32.
 """
 import json
+import os
 import random
 import re
 import time
@@ -80,8 +81,10 @@ def group_rollouts(tok, model, prob, G=4, max_new_tokens=48, budget=None):
         am = agent.ANSWER_RE.search(full_gen)
         correct = am is not None and int(float(am.group(1))) == prob["answer"]
         reward = lcpo_max_reward(correct, ntok, budget)
-        # small format shaping (documented in README): keeps early learning alive
-        reward += (0.1 if used_tool else 0.0) + (0.0 if am else -0.1)
+        # small additive bonuses (documented in README): correctness bonus keeps
+        # the correctness signal alive when every rollout is over budget and the
+        # multiplicative LCPO term clips to 0; format shaping keeps early learning alive
+        reward += (0.15 if correct else 0.0) + (0.1 if used_tool else 0.0) + (0.0 if am else -0.1)
         episodes.append({"segs": segs_ids, "reward": reward, "correct": correct,
                          "used_tool": used_tool, "full_gen": full_gen, "n_tokens": ntok})
     return episodes
@@ -139,7 +142,12 @@ def train_chunk(tok, model, optimizer, seed_start, n_updates, G=4, lr_tag=""):
     for u in range(n_updates):
         t0 = time.time()
         prob = train_problem(seed_start + u)
-        budget = rng.randint(48, 112)
+        if os.environ.get("HARD_ONLY") == "1":  # curriculum: concentrate on unsolved kinds
+            tries = 0
+            while not prob["kind"].startswith("hard") and tries < 50:
+                tries += 1
+                prob = train_problem(seed_start + u + 1000 * tries)
+        budget = rng.randint(32, 88)
         episodes = group_rollouts(tok, model, prob, G=G, budget=budget)
         rewards = torch.tensor([e["reward"] for e in episodes])
         mean, std = rewards.mean(), rewards.std()
