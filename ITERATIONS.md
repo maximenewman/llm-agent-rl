@@ -47,3 +47,11 @@ Honest record of design decisions, pivots, and results. Newest first.
   autograd graphs (incl. 152k-vocab log_softmax tensors) alive at once.
 - Change: per-sequence loss computed and backwarded one at a time
   (grad accumulation); graph freed after each. Mathematically identical.
+
+## 2026-11-06 (iter 6) - first checkpoint eval: 25% -> 58%
+- After 27 logged updates (14 with gradients): held-out eval (same 12 problems,
+  seeds 900000+, greedy) base 3/12 -> trained 7/12. All trained answers used
+  the calculator. Token count not yet reduced (tok_mean still ~90; budget
+  curriculum has not bitten yet - the LCPO term only pays when under budget,
+  and most generations still ramble to the cap).
+- Next: more updates; then budget-down curriculum; then frontier eval.
