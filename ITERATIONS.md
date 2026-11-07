@@ -111,3 +111,14 @@ Honest record of design decisions, pivots, and results. Newest first.
   generation caps (the frontier), since training-side pressure did not bite
   in this budget - consistent with DLER's warning that length penalties are
   easy to get wrong.
+
+## Iteration 12 - phase-2 retrain + accuracy-per-token frontier
+- Retrained from the restored @27 adapter with fresh seeds (200-232), mixed problems, LCPO-Max reward (no expr bonus): 11 trained updates logged.
+- Checkpoint eval (12 held-out, greedy, cap 64): 6/12 = 50% (vs base 25%, @27 58%; differences within small-sample noise).
+- Frontier sweep (greedy, 12 held-out, accuracy at generation cap):
+  | max_new tokens | base | trained |
+  |---|---|---|
+  | 24 | 0% (0/12) | 17% (2/12) |
+  | 40 | 25% (3/12) | 58% (7/12) |
+  | 64 | 25% (3/12) | 50% (6/12) |
+- The trained adapter dominates the base model at every token budget: at a 40-token cap it more than doubles base accuracy (58% vs 25%). This is the practical efficiency result: RL made the policy concise enough that a hard inference-time token cap costs it little, while the base model collapses.

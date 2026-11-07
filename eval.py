@@ -23,6 +23,7 @@ def main():
     ap.add_argument("--offset", type=int, default=0)
     ap.add_argument("--which", choices=["base", "trained"], required=True)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--max-new", type=int, default=64)
     args = ap.parse_args()
 
     tok = AutoTokenizer.from_pretrained(MODEL_ID)
@@ -37,9 +38,9 @@ def main():
     for i, p in enumerate(probs):
         if args.which == "base":
             with model.disable_adapter():
-                r = agent.rollout_one(tok, model, p, greedy=True)
+                r = agent.rollout_one(tok, model, p, greedy=True, max_new_tokens=args.max_new)
         else:
-            r = agent.rollout_one(tok, model, p, greedy=True)
+            r = agent.rollout_one(tok, model, p, greedy=True, max_new_tokens=args.max_new)
         row = {"idx": args.offset + i, "kind": p["kind"], "correct": r["correct"],
                "used_tool": r["used_tool"], "answer_given": r["answer_given"], "truth": r["truth"],
                "n_tokens": r.get("n_tokens")}
